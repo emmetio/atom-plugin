@@ -1,0 +1,36 @@
+{
+  "name": "emmet-atom-plugin",
+  "version": "0.0.1",
+  "description": "Experimental Atom plugin for new Emmet",
+  "main": "dist/atom-plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "watch": "rollup -wc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmetio/atom-plugin.git"
+  },
+  "keywords": [],
+  "author": "Sergey Chikuyonok <serge.che@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emmetio/atom-plugin/issues"
+  },
+  "homepage": "https://github.com/emmetio/atom-plugin#readme",
+  "dependencies": {
+    "@emmetio/expand-abbreviation": "^0.3.0"
+  },
+  "devDependencies": {
+    "rollup": "^0.41.4",
+    "rollup-watch": "^3.2.2"
+  },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "getAutocomplete"
+      }
+    }
+  }
+}
