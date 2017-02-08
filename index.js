@@ -1,7 +1,7 @@
 'use strict';
 
 import autocomplete from './lib/autocomplete';
-import AbbreviationMarker from './lib/abbreviation-marker';
+import MarkerManager from './lib/marker-manager';
 
 let marker;
 
@@ -10,7 +10,7 @@ export function getAutocomplete() {
 }
 
 export function activate() {
-	marker = new AbbreviationMarker();
+	marker = new MarkerManager();
 }
 
 export function deactivate() {
