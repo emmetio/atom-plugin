@@ -6,7 +6,7 @@ import MarkerManager from './lib/marker-manager';
 let marker;
 
 export function getAutocomplete() {
-	return autocomplete('.text.html');
+	return autocomplete('*');
 }
 
 export function activate() {
