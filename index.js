@@ -3,19 +3,19 @@
 import autocomplete from './lib/autocomplete';
 import MarkerManager from './lib/marker-manager';
 
-let marker;
+let markerManager;
 
 export function getAutocomplete() {
 	return autocomplete('*');
 }
 
 export function activate() {
-	marker = new MarkerManager();
+	markerManager = new MarkerManager();
 }
 
 export function deactivate() {
-	if (marker) {
-		marker.dispose();
-		marker = null;
+	if (markerManager) {
+		markerManager.dispose();
+		markerManager = null;
 	}
 }
