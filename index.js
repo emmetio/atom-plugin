@@ -1,4 +1,4 @@
-'use strict';
+'use babel';
 
 import autocomplete from './lib/autocomplete';
 import MarkerManager from './lib/marker-manager';

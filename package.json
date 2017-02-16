@@ -2,7 +2,10 @@
   "name": "emmet-atom-plugin",
   "version": "0.0.1",
   "description": "Experimental Atom plugin for new Emmet",
-  "main": "dist/atom-plugin.js",
+  "engines": {
+    "atom": ">=1.14.0 <2.0.0"
+  },
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
@@ -22,10 +25,6 @@
   "dependencies": {
     "@emmetio/expand-abbreviation": "^0.4.0",
     "@emmetio/extract-abbreviation": "^0.1.1"
-  },
-  "devDependencies": {
-    "rollup": "^0.41.4",
-    "rollup-watch": "^3.2.2"
   },
   "styles": ["./styles/emmet.less"],
   "providedServices": {
