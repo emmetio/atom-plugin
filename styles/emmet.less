@@ -1,3 +1,5 @@
+@import 'ui-variables';
+
 autocomplete-suggestion-list {
 	&.select-list.popover-list ol.list-group li.emmet-expand-completion > span {
 		vertical-align: top;
@@ -27,5 +29,6 @@ autocomplete-suggestion-list {
 }
 
 .emmet-abbreviation .region {
-	border-bottom: 1px solid green;
+	border-bottom: 2px solid fade(@ui-site-color-2, 30%);
+	border-radius: 3px;
 }
