@@ -11,6 +11,11 @@ export function getAutocomplete() {
 
 export function activate() {
 	markerManager = new MarkerManager();
+	atom.commands.add('atom-text-editor', 'emmet:remove-abbreviation-marker',
+		evt => {
+			markerManager.clearMarkers();
+			evt.abortKeyBinding();
+		});
 }
 
 export function deactivate() {

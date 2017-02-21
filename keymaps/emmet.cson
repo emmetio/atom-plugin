@@ -1,0 +1,2 @@
+'atom-text-editor.has-emmet-abbreviation':
+	'escape': 'emmet:remove-abbreviation-marker'
