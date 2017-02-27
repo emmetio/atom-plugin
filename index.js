@@ -3,6 +3,9 @@
 import autocomplete from './lib/autocomplete';
 import MarkerManager from './lib/marker-manager';
 
+// Available actions
+import insertLineBreak from './lib/actions/insert-line-break';
+
 let markerManager;
 
 export function getAutocomplete() {
@@ -17,22 +20,7 @@ export function activate() {
 			evt.abortKeyBinding();
 		});
 
-	// Insert formated line break between tags
-	atom.commands.add('atom-text-editor', 'emmet:insert-formatted-line-break', function(evt) {
-		const editor = this.getModel();
-
-		if (!editor.hasMultipleCursors()) {
-			// TODO support multiple cursors
-			const scope = editor.scopeDescriptorForBufferPosition(editor.getCursorBufferPosition());
-			for (let i = 0; i < scope.scopes.length; i++) {
-				if (scope.scopes[i].includes('.between-tag-pair.html')) {
-					return insertFormattedLineBreak(editor);
-				}
-			}
-		}
-
-		evt.abortKeyBinding();
-	});
+	atom.commands.add('atom-text-editor', 'emmet:insert-formatted-line-break', insertLineBreak);
 }
 
 export function deactivate() {
@@ -40,23 +28,4 @@ export function deactivate() {
 		markerManager.dispose();
 		markerManager = null;
 	}
-}
-
-function insertFormattedLineBreak(editor, cursor) {
-	cursor = cursor || editor.getLastCursor();
-	const startPos = cursor.selection.getBufferRange().start;
-
-	editor.transact(() => {
-		cursor.selection.insertText('\n\t\n', { autoIndent: false });
-		editor.normalizeTabsInBufferRange(cursor.selection.getBufferRange());
-
-		// Indent inserted text
-		const row = startPos.row;
-		const indent = editor.lineTextForBufferRow(row).match(/^\s*/)[0];
-		editor.buffer.insert([row + 1, 0], indent);
-		editor.buffer.insert([row + 2, 0], indent);
-
-		editor.moveUp();
-		editor.moveToEndOfLine();
-	});
 }
