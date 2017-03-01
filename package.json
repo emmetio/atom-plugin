@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/emmetio/atom-plugin#readme",
   "dependencies": {
-    "@emmetio/expand-abbreviation": "^0.4.1",
+    "@emmetio/expand-abbreviation": "^0.4.2",
     "@emmetio/extract-abbreviation": "^0.1.1"
   },
   "styles": ["./styles/emmet.less"],
