@@ -24,9 +24,12 @@
   "homepage": "https://github.com/emmetio/atom-plugin#readme",
   "dependencies": {
     "@emmetio/expand-abbreviation": "^0.4.2",
-    "@emmetio/extract-abbreviation": "^0.1.1"
+    "@emmetio/extract-abbreviation": "^0.1.1",
+    "@emmetio/html-matcher": "^0.2.0"
   },
-  "styles": ["./styles/emmet.less"],
+  "styles": [
+    "./styles/emmet.less"
+  ],
   "providedServices": {
     "autocomplete.provider": {
       "versions": {
