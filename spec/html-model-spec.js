@@ -6,11 +6,15 @@ import create from '../lib/model/html';
 describe('HTML Model', () => {
 	const point = (row, column) => ({ row, column });
 
+	beforeEach(() => {
+		waitsForPromise(() => atom.packages.activatePackage('language-html'));
+	});
+
 	it('should be parsed from HTML document', () => {
 		waitsForPromise(() =>
 			atom.workspace.open(path.resolve(__dirname, './fixtures/sample.html'))
 			.then(editor => {
-				const model = create(editor, 'html').model;
+				const model = create(editor).model;
 				expect(model).toBeTruthy();
 
 				const docElem = model.firstChild;
@@ -60,7 +64,7 @@ describe('HTML Model', () => {
 		waitsForPromise(() =>
 			atom.workspace.open(path.resolve(__dirname, './fixtures/sample.html'))
 			.then(editor => {
-				const model = create(editor, 'html');
+				const model = create(editor);
 				expect(model).toBeTruthy();
 				expect(model.syntax).toBe('html');
 
@@ -79,9 +83,9 @@ describe('HTML Model', () => {
 				expect(meta.start).toEqual(point(4, 1));
 				expect(meta.end).toEqual(point(4, 71));
 
-				// Node’s start and and points should match parent node
-				expect(model.nodeForPoint(meta.start)).toBe(head);
-				expect(model.nodeForPoint(meta.end)).toBe(head);
+				// Node’s start and end points should match parent node
+				expect(model.nodeForPoint(meta.start, true)).toBe(head);
+				expect(model.nodeForPoint(meta.end, true)).toBe(head);
 			})
 		);
 	});
