@@ -8,11 +8,14 @@ import DocumentModel from './lib/model';
 // Available actions
 import insertLineBreak from './lib/actions/insert-line-break';
 import removeMarkers from './lib/actions/remove-markers';
+import balance from './lib/actions/balance';
 
 let disposables;
 const actions = {
 	'remove-abbreviation-marker': removeMarkers,
-	'insert-formatted-line-break': insertLineBreak
+	'insert-formatted-line-break': insertLineBreak,
+	'balance-outward': balance,
+	'balance-inward': balance
 };
 
 export function getAutocomplete() {
