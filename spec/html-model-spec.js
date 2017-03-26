@@ -1,7 +1,7 @@
 'use babel';
 
 import path from 'path';
-import parse from '../lib/model/html';
+import create from '../lib/model/html';
 
 describe('HTML Model', () => {
 	const point = (row, column) => ({ row, column });
@@ -10,7 +10,7 @@ describe('HTML Model', () => {
 		waitsForPromise(() =>
 			atom.workspace.open(path.resolve(__dirname, './fixtures/sample.html'))
 			.then(editor => {
-				const model = parse(editor, 'html');
+				const model = create(editor, 'html').model;
 				expect(model).toBeTruthy();
 
 				const docElem = model.firstChild;
@@ -52,6 +52,36 @@ describe('HTML Model', () => {
 				expect(ul.attributes.length).toBe(1);
 				expect(ul.attributes[0].name.value).toBe('class');
 				expect(ul.attributes[0].value.value).toBe('test');
+			})
+		);
+	});
+
+	it('should get node for point', () => {
+		waitsForPromise(() =>
+			atom.workspace.open(path.resolve(__dirname, './fixtures/sample.html'))
+			.then(editor => {
+				const model = create(editor, 'html');
+				expect(model).toBeTruthy();
+				expect(model.syntax).toBe('html');
+
+				const head = model.nodeForPoint([2, 4]);
+				expect(head).toBeTruthy();
+				expect(head.name).toBe('head');
+				expect(head.start).toEqual(point(2, 0));
+				expect(head.end).toEqual(point(7, 7));
+
+				// Match from closing tag
+				expect(model.nodeForPoint([7, 3])).toBe(head);
+
+				const meta = model.nodeForPoint([4, 4]);
+				expect(meta).toBeTruthy();
+				expect(meta.name).toBe('meta');
+				expect(meta.start).toEqual(point(4, 1));
+				expect(meta.end).toEqual(point(4, 71));
+
+				// Node’s start and and points should match parent node
+				expect(model.nodeForPoint(meta.start)).toBe(head);
+				expect(model.nodeForPoint(meta.end)).toBe(head);
 			})
 		);
 	});
