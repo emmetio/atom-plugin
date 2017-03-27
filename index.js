@@ -9,13 +9,16 @@ import DocumentModel from './lib/model';
 import insertLineBreak from './lib/actions/insert-line-break';
 import removeMarkers from './lib/actions/remove-markers';
 import { balanceInward, balanceOutward } from './lib/actions/balance';
+import { nextEditPoint, previousEditPoint } from './lib/actions/edit-point';
 
 let disposables;
 const actions = {
 	'remove-abbreviation-marker': removeMarkers,
 	'insert-formatted-line-break': insertLineBreak,
 	'balance-outward': balanceOutward,
-	'balance-inward': balanceInward
+	'balance-inward': balanceInward,
+	'go-to-next-edit-point': nextEditPoint,
+	'go-to-previous-edit-point': previousEditPoint
 };
 
 export function getAutocomplete() {
