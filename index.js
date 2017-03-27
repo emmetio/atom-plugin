@@ -33,7 +33,8 @@ export function activate() {
 	disposables.add(documentModel);
 
 	Object.keys(actions).forEach(action => {
-		const handler = evt => actions[action](evt, env);
+		const handler = evt =>
+			actions[action](evt.currentTarget.getModel(), env, evt);
 		disposables.add(atom.commands.add('atom-text-editor', `emmet:${action}`, handler));
 	});
 }
