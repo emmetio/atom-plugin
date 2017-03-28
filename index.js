@@ -8,6 +8,7 @@ import DocumentModel from './lib/model';
 // Available actions
 import insertLineBreak from './lib/actions/insert-line-break';
 import removeMarkers from './lib/actions/remove-markers';
+import matchingPair from './lib/actions/matching-pair';
 import { balanceInward, balanceOutward } from './lib/actions/balance';
 import { nextEditPoint, previousEditPoint } from './lib/actions/edit-point';
 
@@ -18,7 +19,8 @@ const actions = {
 	'balance-outward': balanceOutward,
 	'balance-inward': balanceInward,
 	'go-to-next-edit-point': nextEditPoint,
-	'go-to-previous-edit-point': previousEditPoint
+	'go-to-previous-edit-point': previousEditPoint,
+	'go-to-matching-pair': matchingPair
 };
 
 export function getAutocomplete() {
