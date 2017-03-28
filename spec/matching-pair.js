@@ -34,4 +34,14 @@ describe('Go to Matching Pair Action', () => {
 		run(); // Go to <ul> again
 		expect(getCursorPos()).toEqual(new Point(9, 0));
 	});
+
+	it('should NOT move between tag pairs', () => {
+		const run = () => runCommand('emmet:go-to-matching-pair');
+
+		// Go to initial position
+		editor.setCursorBufferPosition([11, 7]);
+
+		run(); // Don’t move since cursor is not under open or close tag
+		expect(getCursorPos()).toEqual(new Point(11, 7));
+	});
 });
