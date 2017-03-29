@@ -14,7 +14,7 @@ describe('HTML Model', () => {
 		waitsForPromise(() =>
 			atom.workspace.open(path.resolve(__dirname, './fixtures/sample.html'))
 			.then(editor => {
-				const model = create(editor).model;
+				const model = create(editor).dom;
 				expect(model).toBeTruthy();
 
 				const docElem = model.firstChild;

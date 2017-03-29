@@ -11,6 +11,7 @@ import removeMarkers from './lib/actions/remove-markers';
 import matchingPair from './lib/actions/matching-pair';
 import { balanceInward, balanceOutward } from './lib/actions/balance';
 import { nextEditPoint, previousEditPoint } from './lib/actions/edit-point';
+import { selectNextItem } from './lib/actions/select-item';
 
 let disposables;
 const actions = {
@@ -20,7 +21,8 @@ const actions = {
 	'balance-inward': balanceInward,
 	'go-to-next-edit-point': nextEditPoint,
 	'go-to-previous-edit-point': previousEditPoint,
-	'go-to-matching-pair': matchingPair
+	'go-to-matching-pair': matchingPair,
+	'select-next-item': selectNextItem
 };
 
 export function getAutocomplete() {
