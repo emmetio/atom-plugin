@@ -9,9 +9,13 @@ import DocumentModel from './lib/model';
 import insertLineBreak from './lib/actions/insert-line-break';
 import removeMarkers from './lib/actions/remove-markers';
 import matchingPair from './lib/actions/matching-pair';
+import increment from './lib/actions/increment-decrement';
 import { balanceInward, balanceOutward } from './lib/actions/balance';
 import { nextEditPoint, previousEditPoint } from './lib/actions/edit-point';
 import { selectNextItem, selectPreviousItem } from './lib/actions/select-item';
+
+const incrementFactory = delta =>
+	(editor, env, evt) => increment(editor, delta, env, evt);
 
 let disposables;
 const actions = {
@@ -23,7 +27,13 @@ const actions = {
 	'go-to-previous-edit-point': previousEditPoint,
 	'go-to-matching-pair': matchingPair,
 	'select-next-item': selectNextItem,
-	'select-previous-item': selectPreviousItem
+	'select-previous-item': selectPreviousItem,
+	'increment-number-by-1':   incrementFactory(1),
+	'increment-number-by-10':  incrementFactory(10),
+	'increment-number-by-0_1': incrementFactory(0.1),
+	'decrement-number-by-1':   incrementFactory(-1),
+	'decrement-number-by-10':  incrementFactory(-10),
+	'decrement-number-by-0_1': incrementFactory(-0.1)
 };
 
 export function getAutocomplete() {

@@ -7,7 +7,7 @@ describe('Increment/Decrement Action', () => {
 	let editor;
 	const filePath = path.resolve(__dirname, './fixtures/numbers.txt');
 	const runCommand = name => atom.commands.dispatch(atom.views.getView(editor), name);
-	const getCursorPos = () => editor.getCursorBufferPosition();
+	const getText = range => editor.getTextInBufferRange(range);
 
 	beforeEach(() => {
 		waitsForPromise(() => atom.packages.activatePackage(pkg.name));
@@ -73,5 +73,89 @@ describe('Increment/Decrement Action', () => {
 		expect(update('-0010', 1)).toBe('-0009');
 		expect(update('0010', 10000)).toBe('10010');
 		expect(update('-0010.100', 1.3)).toBe('-0008.800');
+	});
+
+	it('should increment numbers at cursors', () => {
+		let sel;
+
+		editor.setCursorBufferPosition([0, 1]);
+		editor.addCursorAtBufferPosition([1, 1]);
+		editor.addCursorAtBufferPosition([3, 1]);
+		editor.addCursorAtBufferPosition([5, 3]);
+		editor.addCursorAtBufferPosition([6, 3]);
+		editor.addCursorAtBufferPosition([7, 7]);
+		editor.addCursorAtBufferPosition([10, 2]);
+
+		runCommand('emmet:increment-number-by-1');
+		sel = editor.getSelectedBufferRanges();
+		expect(getText(sel[0])).toBe('2');
+		expect(getText(sel[1])).toBe('11');
+		expect(getText(sel[2])).toBe('101.50');
+		expect(getText(sel[3])).toBe('-99.567');
+		expect(getText(sel[4])).toBe('1.123');
+		expect(getText(sel[5])).toBe('124.321');
+		expect(getText(sel[6])).toBe('0011');
+
+		runCommand('emmet:increment-number-by-10');
+		sel = editor.getSelectedBufferRanges();
+		expect(getText(sel[0])).toBe('12');
+		expect(getText(sel[1])).toBe('21');
+		expect(getText(sel[2])).toBe('111.50');
+		expect(getText(sel[3])).toBe('-89.567');
+		expect(getText(sel[4])).toBe('11.123');
+		expect(getText(sel[5])).toBe('134.321');
+		expect(getText(sel[6])).toBe('0021');
+
+		runCommand('emmet:increment-number-by-0_1');
+		sel = editor.getSelectedBufferRanges();
+		expect(getText(sel[0])).toBe('12.1');
+		expect(getText(sel[1])).toBe('21.1');
+		expect(getText(sel[2])).toBe('111.60');
+		expect(getText(sel[3])).toBe('-89.467');
+		expect(getText(sel[4])).toBe('11.223');
+		expect(getText(sel[5])).toBe('134.421');
+		expect(getText(sel[6])).toBe('0021.1');
+	});
+
+	it('should decrement numbers at cursors', () => {
+		let sel;
+
+		editor.setCursorBufferPosition([0, 1]);
+		editor.addCursorAtBufferPosition([1, 1]);
+		editor.addCursorAtBufferPosition([3, 1]);
+		editor.addCursorAtBufferPosition([5, 3]);
+		editor.addCursorAtBufferPosition([6, 3]);
+		editor.addCursorAtBufferPosition([7, 7]);
+		editor.addCursorAtBufferPosition([10, 2]);
+
+		runCommand('emmet:decrement-number-by-1');
+		sel = editor.getSelectedBufferRanges();
+		expect(getText(sel[0])).toBe('0');
+		expect(getText(sel[1])).toBe('9');
+		expect(getText(sel[2])).toBe('99.50');
+		expect(getText(sel[3])).toBe('-101.567');
+		expect(getText(sel[4])).toBe('-.877');
+		expect(getText(sel[5])).toBe('122.321');
+		expect(getText(sel[6])).toBe('0009');
+
+		runCommand('emmet:decrement-number-by-10');
+		sel = editor.getSelectedBufferRanges();
+		expect(getText(sel[0])).toBe('-10');
+		expect(getText(sel[1])).toBe('-1');
+		expect(getText(sel[2])).toBe('89.50');
+		expect(getText(sel[3])).toBe('-111.567');
+		expect(getText(sel[4])).toBe('-10.877');
+		expect(getText(sel[5])).toBe('112.321');
+		expect(getText(sel[6])).toBe('-0001');
+
+		runCommand('emmet:decrement-number-by-0_1');
+		sel = editor.getSelectedBufferRanges();
+		expect(getText(sel[0])).toBe('-10.1');
+		expect(getText(sel[1])).toBe('-1.1');
+		expect(getText(sel[2])).toBe('89.40');
+		expect(getText(sel[3])).toBe('-111.667');
+		expect(getText(sel[4])).toBe('-10.977');
+		expect(getText(sel[5])).toBe('112.221');
+		expect(getText(sel[6])).toBe('-0001.1');
 	});
 });
