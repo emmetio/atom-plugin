@@ -11,6 +11,7 @@ import removeMarkers from './lib/actions/remove-markers';
 import matchingPair from './lib/actions/matching-pair';
 import increment from './lib/actions/increment-decrement';
 import removeTag from './lib/actions/remove-tag';
+import splitJoinTag from './lib/actions/split-join-tag';
 import { balanceInward, balanceOutward } from './lib/actions/balance';
 import { nextEditPoint, previousEditPoint } from './lib/actions/edit-point';
 import { selectNextItem, selectPreviousItem } from './lib/actions/select-item';
@@ -30,6 +31,7 @@ const actions = {
 	'select-next-item': selectNextItem,
 	'select-previous-item': selectPreviousItem,
 	'remove-tag': removeTag,
+	'split-join-tag': splitJoinTag,
 	'increment-number-by-1':   incrementFactory(1),
 	'increment-number-by-10':  incrementFactory(10),
 	'increment-number-by-0_1': incrementFactory(0.1),
