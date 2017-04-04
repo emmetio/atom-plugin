@@ -1,3 +1,5 @@
+'use strict';
+
 const { Range } = require('atom');
 const path = require('path');
 const pkg = require('../package.json');
