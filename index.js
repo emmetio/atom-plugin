@@ -13,6 +13,7 @@ import increment from './lib/actions/increment-decrement';
 import removeTag from './lib/actions/remove-tag';
 import splitJoinTag from './lib/actions/split-join-tag';
 import toggleBlockComment from './lib/actions/toggle-block-comment';
+import updateImageSize from './lib/actions/update-image-size';
 import { balanceInward, balanceOutward } from './lib/actions/balance';
 import { nextEditPoint, previousEditPoint } from './lib/actions/edit-point';
 import { selectNextItem, selectPreviousItem } from './lib/actions/select-item';
@@ -34,6 +35,7 @@ const actions = {
 	'remove-tag': removeTag,
 	'split-join-tag': splitJoinTag,
 	'toggle-block-comment': toggleBlockComment,
+	'update-image-size': updateImageSize,
 	'increment-number-by-1':   incrementFactory(1),
 	'increment-number-by-10':  incrementFactory(10),
 	'increment-number-by-0_1': incrementFactory(0.1),
