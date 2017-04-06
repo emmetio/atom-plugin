@@ -14,6 +14,7 @@ import removeTag from './lib/actions/remove-tag';
 import splitJoinTag from './lib/actions/split-join-tag';
 import toggleBlockComment from './lib/actions/toggle-block-comment';
 import updateImageSize from './lib/actions/update-image-size';
+import convertDataUrl from './lib/actions/convert-data-url';
 import { balanceInward, balanceOutward } from './lib/actions/balance';
 import { nextEditPoint, previousEditPoint } from './lib/actions/edit-point';
 import { selectNextItem, selectPreviousItem } from './lib/actions/select-item';
@@ -36,6 +37,7 @@ const actions = {
 	'split-join-tag': splitJoinTag,
 	'toggle-block-comment': toggleBlockComment,
 	'update-image-size': updateImageSize,
+	'convert-data-url': convertDataUrl,
 	'increment-number-by-1':   incrementFactory(1),
 	'increment-number-by-10':  incrementFactory(10),
 	'increment-number-by-0_1': incrementFactory(0.1),
