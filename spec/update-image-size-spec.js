@@ -25,6 +25,7 @@ describe('Update Image Size action', () => {
 	it('should update HTML tag', () => {
 		let flag = false;
 		const run = pos => {
+			flag = false;
 			editor.setCursorBufferPosition(pos);
 			runs(() => setTimeout(() => flag = true, 200));
 			runCommand('emmet:update-image-size');
@@ -53,7 +54,8 @@ describe('Update Image Size action', () => {
 
 		run([4, 5]);
 		runs(() => {
-			expect(editor.lineTextForBufferRow(3)).toBe('<img src="./images/sample@2x.png" width="117" height="117" alt="">');
+			expect(editor.lineTextForBufferRow(4))
+				.toBe('<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAD0lEQVQIW2P4DwcMtGcCAGgtY52g8O1xAAAAAElFTkSuQmCC" width="10" height="10" alt="">');
 		});
 	});
 
@@ -66,14 +68,14 @@ describe('Update Image Size action', () => {
 			waitsFor(() => flag, "Wait for async action to perform", 500);
 		};
 
-		run([4, 5]);
+		run([5, 5]);
 		runs(() => {
-			expect(editor.lineTextForBufferRow(4)).toBe('<img width="" height="" alt="">');
+			expect(editor.lineTextForBufferRow(5)).toBe('<img width="" height="" alt="">');
 		});
 
-		run([6, 5]);
+		run([7, 5]);
 		runs(() => {
-			expect(editor.lineTextForBufferRow(6)).toBe('<div></div>');
+			expect(editor.lineTextForBufferRow(7)).toBe('<div></div>');
 		});
 	});
 });
