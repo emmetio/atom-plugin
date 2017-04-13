@@ -1,7 +1,7 @@
 'use babel';
 
 import { CompositeDisposable } from 'atom';
-import autocomplete from './lib/autocomplete';
+import autocompleteProviders from './lib/autocomplete';
 import MarkerManager from './lib/marker-manager';
 import DocumentModel from './lib/model';
 
@@ -19,6 +19,15 @@ import evaluateMath from './lib/actions/evaluate-math-expression';
 import { balanceInward, balanceOutward } from './lib/actions/balance';
 import { nextEditPoint, previousEditPoint } from './lib/actions/edit-point';
 import { selectNextItem, selectPreviousItem } from './lib/actions/select-item';
+
+const config = {
+	enableMathCompletions: {
+		type: 'boolean',
+		default: true,
+		title: 'Enable evaluated math expression completions',
+		description: 'Displays auto-complete popup with evaluated result when you type simple math expression'
+	}
+};
 
 const incrementFactory = delta =>
 	(editor, env, evt) => increment(editor, delta, env, evt);
@@ -49,7 +58,7 @@ const actions = {
 };
 
 export function getAutocomplete() {
-	return autocomplete('*');
+	return autocompleteProviders();
 }
 
 export function activate() {
@@ -75,3 +84,5 @@ export function deactivate() {
 		disposables = null;
 	}
 }
+
+export { config };
