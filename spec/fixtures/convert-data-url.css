@@ -1,0 +1,7 @@
+.a {
+	background: url('./images/small.png');
+}
+
+.b {
+	background-image: some( nested(url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAD0lEQVQIW2P4DwcMtGcCAGgtY52g8O1xAAAAAElFTkSuQmCC)) );
+}
