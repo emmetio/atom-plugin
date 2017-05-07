@@ -4,7 +4,7 @@ const { Range } = require('atom');
 const path = require('path');
 const pkg = require('../package.json');
 
-describe('Select Item Action', () => {
+describe('Select Item Action (HTML)', () => {
 	let editor;
 	const filePath = path.resolve(__dirname, './fixtures/select-item.html');
 	const runCommand = name => atom.commands.dispatch(atom.views.getView(editor), name);

@@ -1,0 +1,14 @@
+body {
+	color: #ffffff;
+}
+
+.nav, .bar {
+	animation: anim1 0.3s ease-out, anim3 1s linear;
+	background: url(sample.png) foo(bar(baz, bam));
+}
+
+@media (min-width: 200px) {
+	.nav {
+		padding: 100px /* foo */ 20em;
+	}
+}
