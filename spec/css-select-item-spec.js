@@ -137,7 +137,7 @@ describe('Select Item Action (CSS)', () => {
 		expect(getSelection()).toEqual(new Range([11, 27], [11, 31]));
 	});
 
-	it('previous item', () => {
+	it('should select previous item', () => {
 		const run = () => runCommand('emmet:select-previous-item');
 
 		// Go to initial position

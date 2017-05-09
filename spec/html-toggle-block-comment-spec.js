@@ -4,7 +4,7 @@ const { Point } = require('atom');
 const path = require('path');
 const pkg = require('../package.json');
 
-describe('Toggle Block Comment action', () => {
+describe('Toggle Block Comment action (HTML)', () => {
 	let editor;
 	const filePath = path.resolve(__dirname, './fixtures/toggle-comment.html');
 	const runCommand = name => atom.commands.dispatch(atom.views.getView(editor), name);
