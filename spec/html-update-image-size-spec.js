@@ -4,7 +4,7 @@ const { Point } = require('atom');
 const path = require('path');
 const pkg = require('../package.json');
 
-describe('Update Image Size action', () => {
+describe('Update Image Size action (HTML)', () => {
 	let editor;
 	const filePath = path.resolve(__dirname, './fixtures/image-size.html');
 	const runCommand = name => atom.commands.dispatch(atom.views.getView(editor), name);

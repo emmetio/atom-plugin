@@ -1,0 +1,18 @@
+a {
+	background: url(./images/sample.jpg);
+}
+
+b {
+	background: url('/fixtures/images/sample.jpg');
+	width: 9px;
+}
+
+c {background:url(./images/sample.jpg);height:8px;}
+
+d {
+	background:url("./images/sample@2x.png");
+}
+
+e {
+	margin: 1px;
+}
