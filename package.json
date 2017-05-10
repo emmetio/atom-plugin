@@ -24,13 +24,13 @@
   "homepage": "https://github.com/emmetio/atom-plugin#readme",
   "dependencies": {
     "@emmetio/css-parser": "^0.3.0",
-    "@emmetio/expand-abbreviation": "^0.5.0",
+    "@emmetio/expand-abbreviation": "^0.5.1",
     "@emmetio/extract-abbreviation": "^0.1.1",
     "@emmetio/html-matcher": "^0.3.1",
     "@emmetio/math-expression": "^0.1.1",
     "@emmetio/stream-reader": "^2.1.1",
     "@emmetio/stream-reader-utils": "^0.1.0",
-    "image-size": "^0.5.1"
+    "image-size": "^0.5.2"
   },
   "styles": [
     "./styles/emmet.less"
