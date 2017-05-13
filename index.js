@@ -7,7 +7,7 @@ import DocumentModel from './lib/model';
 
 // Available actions
 import insertLineBreak from './lib/actions/insert-line-break';
-import removeMarkers from './lib/actions/remove-markers';
+import { removeMarkers, supressAutoPopup } from './lib/actions/remove-markers';
 import matchingPair from './lib/actions/matching-pair';
 import increment from './lib/actions/increment-decrement';
 import removeTag from './lib/actions/remove-tag';
@@ -26,6 +26,14 @@ const config = {
 		default: true,
 		title: 'Enable evaluated math expression completions',
 		description: 'Displays auto-complete popup with evaluated result when you type simple math expression'
+	},
+	displayPopupOnMove: {
+		type: 'boolean',
+		default: true,
+		title: 'Display autocomplete popup when caret moves inside abbreviation',
+		description: `By default, \`autocomplete-plus\` hides autocomplete popup when cursor moves without changing text.
+			This option will force autocomplete popup to stay visible when cursor is moved inside abbreviation marker,
+			but may introduce side-effects. Disable this option if you exprience issues with autocomplete.`
 	}
 };
 
@@ -35,6 +43,7 @@ const incrementFactory = delta =>
 let disposables;
 const actions = {
 	'remove-abbreviation-marker': removeMarkers,
+	'supress-autopopup': supressAutoPopup,
 	'insert-formatted-line-break': insertLineBreak,
 	'balance-outward': balanceOutward,
 	'balance-inward': balanceInward,

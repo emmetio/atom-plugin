@@ -1,5 +1,8 @@
 'atom-text-editor.has-emmet-abbreviation':
 	'escape': 'emmet:remove-abbreviation-marker'
 
+'atom-text-editor.autocomplete-active.has-emmet-abbreviation':
+	'escape': 'emmet:supress-autopopup'
+
 'atom-text-editor[data-grammar~="html"]:not([mini])':
 	'enter': 'emmet:insert-formatted-line-break'
