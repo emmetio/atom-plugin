@@ -1,7 +1,7 @@
 'use babel';
 
 import { CompositeDisposable } from 'atom';
-import autocompleteProviders from './lib/autocomplete';
+import autocompleteProviders from './lib/autocomplete/index';
 import MarkerManager from './lib/marker-manager';
 import DocumentModel from './lib/model';
 
@@ -71,7 +71,7 @@ export function getAutocomplete() {
 }
 
 export function activate() {
-	disposables = new CompositeDisposable()
+	disposables = new CompositeDisposable();
 
 	const markerManager = new MarkerManager();
 	const documentModel = new DocumentModel();

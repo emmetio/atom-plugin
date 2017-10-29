@@ -7,9 +7,10 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run eslint && apm test",
     "build": "rollup -c",
-    "watch": "rollup -wc"
+    "watch": "rollup -wc",
+    "eslint": "eslint --quiet ./lib ./index.js"
   },
   "repository": {
     "type": "git",
@@ -42,5 +43,10 @@
         "2.0.0": "getAutocomplete"
       }
     }
+  },
+  "devDependencies": {
+    "eslint": "^4.10.0",
+    "rollup": "^0.50.0",
+    "rollup-watch": "^4.3.1"
   }
 }
