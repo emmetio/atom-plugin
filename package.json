@@ -10,7 +10,7 @@
     "test": "npm run eslint && apm test",
     "build": "rollup -c",
     "watch": "rollup -wc",
-    "eslint": "eslint --quiet ./lib ./index.js"
+    "eslint": "eslint --quiet ./lib ./spec ./index.js"
   },
   "repository": {
     "type": "git",

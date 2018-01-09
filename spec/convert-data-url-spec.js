@@ -1,6 +1,5 @@
 'use strict';
 
-const { Point } = require('atom');
 const fs = require('fs');
 const path = require('path');
 const pkg = require('../package.json');
@@ -14,7 +13,7 @@ describe('Convert Data:URL action', () => {
 	const waitForAsyncAction = () => {
 		let flag = false;
 		setTimeout(() => flag = true, 100);
-		waitsFor(() => flag, "Wait for async action to perform", 500);
+		waitsFor(() => flag, 'Wait for async action to perform', 500);
 	};
 
 
@@ -69,7 +68,7 @@ describe('Convert Data:URL action', () => {
 			waitForAsyncAction();
 		});
 		runs(() => {
-			expect(editor.lineTextForBufferRow(1)).toBe("\tbackground: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAD0lEQVQIW2P4DwcMtGcCAGgtY52g8O1xAAAAAElFTkSuQmCC');");
+			expect(editor.lineTextForBufferRow(1)).toBe('\tbackground: url(\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAD0lEQVQIW2P4DwcMtGcCAGgtY52g8O1xAAAAAElFTkSuQmCC\');');
 		});
 	});
 

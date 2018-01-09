@@ -16,8 +16,7 @@ describe('Image Size module', () => {
 				realHeight: 234,
 				width: 234,
 				height: 234
-			})
-		));
+			})));
 
 		waitsForPromise(() => imageSize(img2x)
 			.then(size => expect(size).toEqual({
@@ -25,8 +24,7 @@ describe('Image Size module', () => {
 				realHeight: 234,
 				width: 117,
 				height: 117
-			})
-		));
+			})));
 	});
 
 	it('should get size of remote file', () => {
@@ -52,8 +50,7 @@ describe('Image Size module', () => {
 				realHeight: 234,
 				width: 234,
 				height: 234
-			})
-		));
+			})));
 
 		waitsForPromise(() => imageSize(`${host}/image@2x.jpg`)
 			.then(size => expect(size).toEqual({
@@ -61,8 +58,7 @@ describe('Image Size module', () => {
 				realHeight: 234,
 				width: 117,
 				height: 117
-			})
-		));
+			})));
 
 		waitsForPromise(() => new Promise(resolve => server.close(resolve)));
 	});

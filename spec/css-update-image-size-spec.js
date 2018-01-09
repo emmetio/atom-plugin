@@ -1,6 +1,5 @@
 'use strict';
 
-const { Point } = require('atom');
 const path = require('path');
 const pkg = require('../package.json');
 
@@ -25,8 +24,8 @@ describe('Update Image Size action (CSS)', () => {
 		let flag = false;
 		editor.setCursorBufferPosition(pos);
 		runCommand('emmet:update-image-size');
-		setTimeout(() => flag = true, 200)
-		waitsFor(() => flag, "Wait for async action to perform", 500);
+		setTimeout(() => flag = true, 200);
+		waitsFor(() => flag, 'Wait for async action to perform', 500);
 	};
 
 	it('should update rule without width and height', () => {

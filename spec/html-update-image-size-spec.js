@@ -1,6 +1,5 @@
 'use strict';
 
-const { Point } = require('atom');
 const path = require('path');
 const pkg = require('../package.json');
 
@@ -8,7 +7,6 @@ describe('Update Image Size action (HTML)', () => {
 	let editor;
 	const filePath = path.resolve(__dirname, './fixtures/image-size.html');
 	const runCommand = name => atom.commands.dispatch(atom.views.getView(editor), name);
-	const run = () => runCommand('emmet:update-image-size');
 
 	beforeEach(() => {
 		jasmine.useRealClock();
@@ -29,7 +27,7 @@ describe('Update Image Size action (HTML)', () => {
 			editor.setCursorBufferPosition(pos);
 			runs(() => setTimeout(() => flag = true, 200));
 			runCommand('emmet:update-image-size');
-			waitsFor(() => flag, "Wait for async action to perform", 500);
+			waitsFor(() => flag, 'Wait for async action to perform', 500);
 		};
 
 		run([0, 5]);
@@ -65,7 +63,7 @@ describe('Update Image Size action (HTML)', () => {
 			editor.setCursorBufferPosition(pos);
 			runs(() => setTimeout(() => flag = true, 200));
 			runCommand('emmet:update-image-size');
-			waitsFor(() => flag, "Wait for async action to perform", 500);
+			waitsFor(() => flag, 'Wait for async action to perform', 500);
 		};
 
 		run([5, 5]);
